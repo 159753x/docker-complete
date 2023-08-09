@@ -5,9 +5,11 @@ import CourseGoals from './components/goals/CourseGoals';
 import ErrorAlert from './components/UI/ErrorAlert';
 
 function App() {
+  
   const [loadedGoals, setLoadedGoals] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+
 
   useEffect(function () {
     async function fetchData() {
@@ -19,14 +21,14 @@ function App() {
         const resData = await response.json();
 
         if (!response.ok) {
-          throw new Error(resData.message || 'Fetching the goals failed.');
+          throw new Error(resData.message || 'Preuzimanje ciljeva neuspešno');
         }
 
         setLoadedGoals(resData.goals);
       } catch (err) {
         setError(
           err.message ||
-            'Fetching goals failed - the server responsed with an error.'
+            'Preuzimanje ciljeva neuspešno - server je odgovorio greškom.'
         );
       }
       setIsLoading(false);
@@ -52,7 +54,7 @@ function App() {
       const resData = await response.json();
 
       if (!response.ok) {
-        throw new Error(resData.message || 'Adding the goal failed.');
+        throw new Error(resData.message || 'Dodavanje ciljeva neuspešno');
       }
 
       setLoadedGoals((prevGoals) => {

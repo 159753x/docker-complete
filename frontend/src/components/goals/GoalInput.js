@@ -14,7 +14,7 @@ function GoalInput(props) {
     event.preventDefault();
 
     if (enteredGoalText.trim().length === 0) {
-      alert('Invalid text - please enter a longer one!');
+      alert('Loš unos');
       return;
     }
 
@@ -27,14 +27,14 @@ function GoalInput(props) {
     <section id='goal-input'>
       <Card>
         <form onSubmit={goalSubmitHandler}>
-          <label htmlFor='text'>New Goal</label>
+          <label htmlFor='text'>Novi cilj</label>
           <input
             type='text'
             id='text'
             value={enteredGoalText}
             onChange={updateGoalTextHandler}
           />
-          <button>Add Goal</button>
+          <button>Dodaj Cilj!</button>
         </form>
       </Card>
     </section>
